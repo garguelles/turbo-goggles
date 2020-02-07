@@ -3,6 +3,8 @@ import 'package:youtube_ui/screens/home/widgets/video_item.dart';
 
 
 class HomeScreen extends StatelessWidget {
+  static const routeName = '/';
+
   @override
   Widget build(BuildContext context) {
     return Container(

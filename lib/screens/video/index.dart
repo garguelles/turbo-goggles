@@ -4,6 +4,8 @@ import 'package:youtube_ui/screens/video/widgets/channel_info.dart';
 import 'package:youtube_ui/screens/video/widgets/playlist.dart';
 
 class VideoScreen extends StatelessWidget {
+  static const routeName = '/video';
+
   final String title;
   final String views;
   final String cover;
