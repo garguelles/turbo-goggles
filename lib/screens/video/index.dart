@@ -6,6 +6,7 @@ import 'package:youtube_ui/screens/video/widgets/playlist.dart';
 class VideoScreen extends StatelessWidget {
   static const routeName = '/video';
 
+  final String id;
   final String title;
   final String views;
   final String cover;
@@ -13,6 +14,7 @@ class VideoScreen extends StatelessWidget {
   final String subscribers;
 
   VideoScreen({
+    this.id,
     this.title,
     this.views,
     this.cover,

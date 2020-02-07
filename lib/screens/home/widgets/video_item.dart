@@ -19,7 +19,7 @@ class VideoItem extends StatelessWidget {
   });
 
   void _handleTap() {
-    print(title);
+    print(id);
   }
 
   @override

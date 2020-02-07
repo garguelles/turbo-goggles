@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.grey,
       ),
-      initialRoute: '/',
+      initialRoute: HomeScreen.routeName,
       routes: {
         HomeScreen.routeName: (context) => MainContainer(widget: HomeScreen()),
         VideoScreen.routeName: (context) => MainContainer(
