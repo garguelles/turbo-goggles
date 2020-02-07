@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class ChannelInfo extends StatelessWidget {
+  final String channelName;
+  final String subscribers;
+
+  ChannelInfo({this.channelName, this.subscribers});
+
   @override
   Widget build(BuildContext context) {
     Widget _channelDetail = Row(
@@ -18,14 +23,14 @@ class ChannelInfo extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              'ThursdayVEVO',
+              channelName,
               style: TextStyle(
                 fontSize: 15,
                 fontWeight: FontWeight.w700,
               ),
             ),
             Text(
-              '390k subscribers',
+              '$subscribers subscribers',
               style: TextStyle(
                 color: Colors.grey,
                 fontWeight: FontWeight.w600,
