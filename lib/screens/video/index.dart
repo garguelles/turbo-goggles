@@ -36,7 +36,6 @@ class VideoScreen extends StatelessWidget {
       ),
     );
 
-
     return ListView(
       children: <Widget>[
         Image.asset(
