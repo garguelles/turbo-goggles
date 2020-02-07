@@ -27,13 +27,7 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.routeName: (context) => MainContainer(widget: HomeScreen()),
         VideoScreen.routeName: (context) => MainContainer(
-          widget: VideoScreen(
-            title: 'Thursday - Steps Ascending',
-            views: '967k',
-            cover: 'thursday.jpg',
-            channelName: 'ThursdayVEVO',
-            subscribers: '2.4M',
-          ),
+          widget: VideoScreen(),
         ),
       },
     );

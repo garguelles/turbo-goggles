@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:youtube_ui/screens/video/index.dart';
+import 'package:youtube_ui/utils/screen_arguments.dart';
 
 class VideoItem extends StatelessWidget {
   final int id;
@@ -18,14 +20,16 @@ class VideoItem extends StatelessWidget {
     this.cover,
   });
 
-  void _handleTap() {
-    print(id);
-  }
-
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: _handleTap,
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          VideoScreen.routeName,
+          arguments: ScreenArguments(id),
+        );
+      },
       child: Container(
         margin: EdgeInsets.only(bottom: 18),
         child: Column(

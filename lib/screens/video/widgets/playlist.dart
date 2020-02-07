@@ -1,7 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_ui/screens/video/widgets/playlist_item.dart';
+import 'package:youtube_ui/main.dart';
 
 class Playlist extends StatelessWidget {
+  final int currentVideoId;
+
+  Playlist({ this.currentVideoId });
+
+  List<PlaylistItem> _buildPlaylist(appData) {
+    List<PlaylistItem> playlist = List<PlaylistItem>();
+
+    appData.forEach((key, val) {
+      // remove current video from playlist
+      if (currentVideoId != key) {
+        PlaylistItem item = PlaylistItem(
+          id: key,
+          title: val['title'],
+          cover: val['cover'],
+          channelName: val['channelName'],
+          views: val['views'],
+          uploadDate: val['uploadDate'],
+        );
+
+        playlist.add(item);
+      }
+    });
+
+    return playlist;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -36,7 +63,6 @@ class Playlist extends StatelessWidget {
                     value: false,
                     activeColor: Colors.blue,
                     onChanged: (newValue) {
-                      print(newValue);
                     },
                   ),
                 ],
@@ -44,36 +70,7 @@ class Playlist extends StatelessWidget {
             ],
           ),
           Column(
-            children: <Widget>[
-              PlaylistItem(
-                title: 'Deftones - Minerva',
-                cover: 'deftones.jpg',
-                channelName: 'DeftonesVEVO',
-                views: '20M',
-                uploadDate: '8 years ago',
-              ),
-              PlaylistItem(
-                title: 'Thrice - Image of the invicible',
-                cover: 'thrice.jpeg',
-                channelName: 'ThriceVEVO',
-                views: '5M',
-                uploadDate: '4 years ago',
-              ),
-              PlaylistItem(
-                title: 'Tool - Descending',
-                cover: 'tool.jpg',
-                channelName: 'TOOL',
-                views: '32M',
-                uploadDate: '3 months ago',
-              ),
-              PlaylistItem(
-                title: 'Trivium - Down from the sky',
-                cover: 'trivium.jpeg',
-                channelName: 'TriviumOfficial',
-                views: '18M',
-                uploadDate: '6 years ago',
-              )
-            ],
+            children: _buildPlaylist(appData),
           )
         ],
       )

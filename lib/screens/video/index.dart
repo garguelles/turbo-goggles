@@ -2,30 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:youtube_ui/screens/video/widgets/action_buttons.dart';
 import 'package:youtube_ui/screens/video/widgets/channel_info.dart';
 import 'package:youtube_ui/screens/video/widgets/playlist.dart';
+import 'package:youtube_ui/utils/screen_arguments.dart';
+import 'package:youtube_ui/main.dart';
 
 class VideoScreen extends StatelessWidget {
   static const routeName = '/video';
 
-  final String id;
-  final String title;
-  final String views;
-  final String cover;
-  final String channelName;
-  final String subscribers;
-
-  VideoScreen({
-    this.id,
-    this.title,
-    this.views,
-    this.cover,
-    this.channelName,
-    this.subscribers,
-  });
-
   @override
   Widget build(BuildContext context) {
+    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
+    Map data = appData[args.id];
+
     Widget _videoTitle = Text(
-      this.title,
+      data['title'],
       style: TextStyle(
         fontWeight: FontWeight.w500,
         fontSize: 18,
@@ -33,7 +22,7 @@ class VideoScreen extends StatelessWidget {
     );
 
     Widget _viewCount = Text(
-      '$views views',
+      '${data['views']} views',
       style: TextStyle(
         color: Colors.grey,
         fontSize: 14,
@@ -43,7 +32,7 @@ class VideoScreen extends StatelessWidget {
     return ListView(
       children: <Widget>[
         Image.asset(
-          'assets/images/$cover',
+          'assets/images/${data['cover']}',
           height: 240,
           fit: BoxFit.cover,
         ),
@@ -64,10 +53,10 @@ class VideoScreen extends StatelessWidget {
           ),
         ),
         ChannelInfo(
-          channelName: channelName,
-          subscribers: subscribers,
+          channelName: data['channelName'],
+          subscribers: data['subscribers'],
         ),
-        Playlist(),
+        Playlist(currentVideoId: args.id),
       ],
     );
   }

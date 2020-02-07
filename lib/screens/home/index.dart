@@ -10,7 +10,6 @@ class HomeScreen extends StatelessWidget {
     List<VideoItem> items = List<VideoItem>();
 
     appData.forEach((k, v) {
-      print(v['title']);
       items.add(VideoItem(
         id: k,
         title: v['title'],
