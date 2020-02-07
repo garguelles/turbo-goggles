@@ -23,18 +23,63 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.grey,
       ),
-      home: MainContainer(
-        /*widget: VideoScreen(
-          title: 'Thursday - Steps Ascending',
-          views: '967k',
-          cover: 'thursday.jpg',
-          channelName: 'ThursdayVEVO',
-          subscribers: '2.4M',
-        )*/
-        widget: HomeScreen(),
-      ),
+      initialRoute: HomeScreen.routeName,
+      routes: {
+        HomeScreen.routeName: (context) => MainContainer(widget: HomeScreen()),
+        VideoScreen.routeName: (context) => MainContainer(
+          widget: VideoScreen(),
+        ),
+      },
     );
   }
 }
+
+final Map appData = const {
+  1: {
+    'id': 1,
+    'title': 'Thursday - Steps Ascending',
+    'cover': 'thursday.jpg',
+    'channelName': 'ThursdayOfficial',
+    'views': '352K',
+    'uploadDate': '5 years ago',
+    'subscribers': '2.5M'
+  },
+  2: {
+    'id': 2,
+    'title': 'Deftones - Minerva',
+    'cover': 'deftones.jpg',
+    'channelName': 'DeftonesVEVO',
+    'views': '20M',
+    'uploadDate': '8 years ago',
+    'subscribers': '5.3M',
+  },
+  3: {
+    'id': 3,
+    'title': 'Tool - Descending (live)',
+    'cover': 'tool.jpg',
+    'channelName': 'TOOL',
+    'views': '32M',
+    'uploadDate': '3 months ago',
+    'subscribers': '9.3M',
+  },
+  4: {
+    'id': 4,
+    'title': 'Trivium - Down from the sky',
+    'cover': 'trivium.jpeg',
+    'channelName': 'TriviumOfficial',
+    'views': '18M',
+    'uploadDate': '6 years ago',
+    'subscribers': '1.7M',
+  },
+  5: {
+    'id': 5,
+    'title': 'Thrice - Image of the invicible',
+    'cover': 'thrice.jpeg',
+    'channelName': 'ThriceVEVO',
+    'views': '5M',
+    'uploadDate': '4 years ago',
+    'subscribers': '678K',
+  },
+};
 
 

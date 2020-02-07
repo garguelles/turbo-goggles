@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:youtube_ui/screens/video/index.dart';
+import 'package:youtube_ui/utils/screen_arguments.dart';
 
 class VideoItem extends StatelessWidget {
+  final int id;
   final String cover;
   final String title;
   final String channelName;
@@ -9,6 +12,7 @@ class VideoItem extends StatelessWidget {
   final String uploadDate;
 
   VideoItem({
+    this.id,
     this.title,
     this.channelName,
     this.views,
@@ -18,22 +22,32 @@ class VideoItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 18),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Image.asset(
-            'assets/images/$cover',
-            width: 600,
-            height: 240,
-            fit: BoxFit.cover,
-          ),
-          _buildInfo(),
-        ],
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(
+          context,
+          VideoScreen.routeName,
+          arguments: ScreenArguments(id),
+        );
+      },
+      child: Container(
+        margin: EdgeInsets.only(bottom: 18),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: <Widget>[
+            Image.asset(
+              'assets/images/$cover',
+              width: 600,
+              height: 240,
+              fit: BoxFit.cover,
+            ),
+            _buildInfo(),
+          ],
+        ),
       ),
     );
+
   }
 
   Widget _buildInfo() {
@@ -51,36 +65,35 @@ class VideoItem extends StatelessWidget {
             ),
           ),
           Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                children: <Widget>[
-                  Text(
-                    this.title,
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w700,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                Text(
+                  this.title,
+                  style: TextStyle(
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700,
 
-                    ),
                   ),
-                  SizedBox(height: 5),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    children: <Widget>[
-                      Text(this.channelName),
-                      Text(' - ', style: TextStyle(fontSize: 8)),
-                      Text('$views views'),
-                      Text(' - ', style: TextStyle(fontSize: 8)),
-                      Text(this.uploadDate)
-                    ],
-                  )
-                ],
-              )
+                ),
+                SizedBox(height: 5),
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: <Widget>[
+                    Text(this.channelName),
+                    Text(' - ', style: TextStyle(fontSize: 8)),
+                    Text('$views views'),
+                    Text(' - ', style: TextStyle(fontSize: 8)),
+                    Text(this.uploadDate)
+                  ],
+                )
+              ],
+            )
           )
         ],
       ),
     );
-
   }
 }
