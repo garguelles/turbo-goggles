@@ -45,8 +45,34 @@ class Playlist extends StatelessWidget {
           ),
           Column(
             children: <Widget>[
-              PlaylistItem(),
-              PlaylistItem(),
+              PlaylistItem(
+                title: 'Deftones - Minerva',
+                cover: 'deftones.jpg',
+                channelName: 'DeftonesVEVO',
+                views: '20M',
+                uploadDate: '8 years ago',
+              ),
+              PlaylistItem(
+                title: 'Thrice - Image of the invicible',
+                cover: 'thrice.jpeg',
+                channelName: 'ThriceVEVO',
+                views: '5M',
+                uploadDate: '4 years ago',
+              ),
+              PlaylistItem(
+                title: 'Tool - Descending',
+                cover: 'tool.jpg',
+                channelName: 'TOOL',
+                views: '32M',
+                uploadDate: '3 months ago',
+              ),
+              PlaylistItem(
+                title: 'Trivium - Down from the sky',
+                cover: 'trivium.jpeg',
+                channelName: 'TriviumOfficial',
+                views: '18M',
+                uploadDate: '6 years ago',
+              )
             ],
           )
         ],

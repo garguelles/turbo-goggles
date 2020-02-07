@@ -23,7 +23,16 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.grey,
       ),
-      home: MainContainer(widget: VideoScreen()),
+      home: MainContainer(
+        /*widget: VideoScreen(
+          title: 'Thursday - Steps Ascending',
+          views: '967k',
+          cover: 'thursday.jpg',
+          channelName: 'ThursdayVEVO',
+          subscribers: '2.4M',
+        )*/
+        widget: HomeScreen(),
+      ),
     );
   }
 }

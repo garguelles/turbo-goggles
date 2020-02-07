@@ -4,10 +4,24 @@ import 'package:youtube_ui/screens/video/widgets/channel_info.dart';
 import 'package:youtube_ui/screens/video/widgets/playlist.dart';
 
 class VideoScreen extends StatelessWidget {
+  final String title;
+  final String views;
+  final String cover;
+  final String channelName;
+  final String subscribers;
+
+  VideoScreen({
+    this.title,
+    this.views,
+    this.cover,
+    this.channelName,
+    this.subscribers,
+  });
+
   @override
   Widget build(BuildContext context) {
     Widget _videoTitle = Text(
-      'Thursday - Steps Ascending',
+      this.title,
       style: TextStyle(
         fontWeight: FontWeight.w500,
         fontSize: 18,
@@ -15,7 +29,7 @@ class VideoScreen extends StatelessWidget {
     );
 
     Widget _viewCount = Text(
-      '93k views',
+      '$views views',
       style: TextStyle(
         color: Colors.grey,
         fontSize: 14,
@@ -26,7 +40,7 @@ class VideoScreen extends StatelessWidget {
     return ListView(
       children: <Widget>[
         Image.asset(
-          'assets/images/thursday.jpg',
+          'assets/images/$cover',
           height: 240,
           fit: BoxFit.cover,
         ),
@@ -46,7 +60,10 @@ class VideoScreen extends StatelessWidget {
             ],
           ),
         ),
-        ChannelInfo(),
+        ChannelInfo(
+          channelName: channelName,
+          subscribers: subscribers,
+        ),
         Playlist(),
       ],
     );
